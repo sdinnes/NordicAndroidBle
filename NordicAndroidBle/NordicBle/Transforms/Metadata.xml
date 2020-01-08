@@ -1,0 +1,33 @@
+﻿<metadata>
+
+  <!-- MainThreadBluetoothGattCallback had a lower visibility which made it not available to the bindings. -->
+  <attr path="/api/package[@name='no.nordicsemi.android.ble']/class[@name='MainThreadBluetoothGattCallback']"
+    name="visibility">public</attr>
+  
+  <!-- BleManagerGattCallback was protected, which prevented us from descending from it. -->
+  <attr path="/api/package[@name='no.nordicsemi.android.ble']/class[@name='BleManager.BleManagerGattCallback']"
+    name="visibility">public</attr>
+
+  <!-- Request, which is abstract, causing duplicate definitions around the timeout method. As its abstract we don't need to explicitly bind it?
+  <remove-node path="/api/package[@name='no.nordicsemi.android.ble']/class[@name='TimeoutableRequest']/method[@name='timeout']"/> -->
+
+  <!-- Change the visibility of abstract class TimeoutableRequest to match ancestor and descendants. -->
+  <attr path="/api/package[@name='no.nordicsemi.android.ble']/class[@name='TimeoutableRequest']"
+      name="visibility">public</attr>
+
+  <!-- Change the timeout method in abstract class TimeoutableRequest to match ancestor and descendants. -->
+  <attr path="/api/package[@name='no.nordicsemi.android.ble']/class[@name='TimeoutableRequest']/method[@name='timeout']"
+      name="visibility">public</attr>
+
+  <!-- in the java, class GattError had a member GattError. This is not allowed in C# - change the class name. -->
+  <attr path="/api/package[@name='no.nordicsemi.android.ble.error']/class[@name='GattError']"
+        name="managedName">
+    GattErrors
+  </attr>
+
+  <!-- in the java, class GattError had a member GattError. This is not allowed in C# - change the class name. 
+  <attr path="/api/package[@name='no.nordicsemi.android.ble.error']//class[@name='BleManager']method[@name='SetGattCallbacks']/
+        parameter[@name='callbacks']"
+        name="managedType">IBleManagerCallbacks</attr>-->
+
+  </metadata>

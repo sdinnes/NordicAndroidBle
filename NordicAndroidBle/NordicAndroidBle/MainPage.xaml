@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NordicAndroidBle.MainPage">
+
+    <StackLayout>        
+        
+        <Label Text="Welcome to Nordic Android BLE!" 
+               TextColor="DarkBlue" 
+               HorizontalOptions="Center"
+               VerticalOptions="StartAndExpand" />
+
+        <Button Text="Click to scan BLE" Command="{Binding ScanBLE}" VerticalOptions="Start" BackgroundColor="Blue" TextColor="White" Margin="10" />
+
+        <StackLayout VerticalOptions="StartAndExpand">
+
+            <ListView 
+                x:Name="EndpointList"
+                ItemsSource="{Binding DeviceList}"
+                SelectedItem="{Binding SelectedDevice, Mode=TwoWay}"
+                ItemTapped="SelectedLocation_ItemTapped" 
+                BackgroundColor="AliceBlue"
+                HorizontalOptions="Fill">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid ColumnSpacing="0" HorizontalOptions="FillAndExpand">
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding Name}" 
+                                       Grid.Row="0"
+                                       Grid.Column="0"
+                                       Margin="20,0,0,0"
+                                       FontSize="Medium" 
+                                       HorizontalTextAlignment="Start" 
+                                       VerticalTextAlignment="Center"
+                                       HorizontalOptions="StartAndExpand"/>
+
+                                <Label Text="{Binding ShortId}" 
+                                       Grid.Row="0"
+                                       Grid.Column="1"
+                                       Margin="10,0,20,0"
+                                       FontSize="Medium"
+                                       HorizontalTextAlignment="End" 
+                                       VerticalTextAlignment="Center"
+                                       HorizontalOptions="End"/>
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+
+        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" VerticalOptions="End"/>
+
+        <Label Text="{Binding AdaptorState}" HorizontalOptions="Center" VerticalOptions="End" BackgroundColor="Azure" LineBreakMode="WordWrap" />
+
+        <Button Text="Disconnect from device" Command="{Binding Disconnect}" VerticalOptions="End" BackgroundColor="Blue" TextColor="White" Margin="10"/>
+        
+    </StackLayout>
+
+</ContentPage>

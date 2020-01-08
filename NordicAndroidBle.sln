@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NordicAndroidBle.Android", "NordicAndroidBle\NordicAndroidBle.Android\NordicAndroidBle.Android.csproj", "{A5469AEE-54CE-4AE6-91AF-7CDBD87053D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NordicAndroidBle", "NordicAndroidBle\NordicAndroidBle\NordicAndroidBle.csproj", "{08DABDD6-BAB6-4FD9-9C6D-C98207F95AE7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7C70BD10-4809-48CE-8776-57447B7C5E6F} = {7C70BD10-4809-48CE-8776-57447B7C5E6F}
+		{7BDBEB21-13BC-4434-997F-08357B0C09C4} = {7BDBEB21-13BC-4434-997F-08357B0C09C4}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NordicScanner", "NordicAndroidBle\NordicScanner\NordicScanner.csproj", "{7BDBEB21-13BC-4434-997F-08357B0C09C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NordicBle", "NordicAndroidBle\NordicBle\NordicBle.csproj", "{7C70BD10-4809-48CE-8776-57447B7C5E6F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5469AEE-54CE-4AE6-91AF-7CDBD87053D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5469AEE-54CE-4AE6-91AF-7CDBD87053D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5469AEE-54CE-4AE6-91AF-7CDBD87053D5}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{A5469AEE-54CE-4AE6-91AF-7CDBD87053D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5469AEE-54CE-4AE6-91AF-7CDBD87053D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5469AEE-54CE-4AE6-91AF-7CDBD87053D5}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{08DABDD6-BAB6-4FD9-9C6D-C98207F95AE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08DABDD6-BAB6-4FD9-9C6D-C98207F95AE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08DABDD6-BAB6-4FD9-9C6D-C98207F95AE7}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{08DABDD6-BAB6-4FD9-9C6D-C98207F95AE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08DABDD6-BAB6-4FD9-9C6D-C98207F95AE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08DABDD6-BAB6-4FD9-9C6D-C98207F95AE7}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{7BDBEB21-13BC-4434-997F-08357B0C09C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BDBEB21-13BC-4434-997F-08357B0C09C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BDBEB21-13BC-4434-997F-08357B0C09C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BDBEB21-13BC-4434-997F-08357B0C09C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C70BD10-4809-48CE-8776-57447B7C5E6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C70BD10-4809-48CE-8776-57447B7C5E6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C70BD10-4809-48CE-8776-57447B7C5E6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C70BD10-4809-48CE-8776-57447B7C5E6F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CE1A9CCE-3195-4389-BF04-DFD68C0A342F}
+	EndGlobalSection
+EndGlobal
