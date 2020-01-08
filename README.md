@@ -84,7 +84,7 @@ Connecting to a device is done this way:
 
 In the event handler `PassWordWrittenEvent` you can see how we check the result and proceed to read something from the device:
 
-private void PassWordWrittenEvent(object sender, CharacteristicWriteEventArgs e)
+        private void PassWordWrittenEvent(object sender, CharacteristicWriteEventArgs e)
         {
             if (e.Success)
             {
