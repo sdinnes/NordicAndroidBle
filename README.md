@@ -26,8 +26,6 @@ Note that when you connect to a device, one of the parameters is a list of servi
 
 Here is how it is done in the example view model:
 
-`
-
             // Create the list of services and characteristics that we need - first, the generic properties
             ServiceAndCharacteristicsParcel genericService = new ServiceAndCharacteristicsParcel(new Guid(SERVICE_FOR_BEACON));
 
@@ -49,4 +47,55 @@ Here is how it is done in the example view model:
             RequestedServicesAndCharacteristics = new List<ServiceAndCharacteristicsParcel>
                 {
                     genericService, deviceService, beaconService
-                };`
+                };
+                
+Connecting to a device is done this way:
+
+        private void NordicConnectDirect(DeviceInfo peripheral)
+        {
+            _ble.CancelScan();
+
+            _ble.ConnectToDevice(peripheral, 0, RequestedServicesAndCharacteristics, false, ConnectionEvent);
+        }
+
+        private void ConnectionEvent(object sender, SuccessEventArgs e)
+        {
+            DeviceIsConnected = e.Success;
+
+            if (DeviceIsConnected)
+            {
+                // Devide password "0x666666" (sent as three bytes 0x66)
+                byte[] pwb = new byte[] { 0x66, 0x66, 0x66 };
+
+                bool result = _ble.WriteCharacteristic(SERVICE_FOR_BEACON, CHARACTERISTIC_FOR_PASSWORD, pwb, PassWordWrittenEvent);
+
+                if (!result)
+                {
+                    Application.Current.MainPage.DisplayAlert("ERROR", string.Format("Could not write characteristic {0}", CHARACTERISTIC_FOR_PASSWORD), "Close");
+                }
+            }
+            else
+            {
+                Application.Current.MainPage.DisplayAlert("ERROR", string.Format("Error connecting to device: {0}", e.Reason), "Close");
+            }
+        }
+
+`ConnectionEvent` is called when the connection completes (both for failure and success); `SuccessEventArgs.Success` indicates the result.  In this example, the first step with the iBeacon is to write a password `0x666666` to be able to access it.
+
+In the event handler `PassWordWrittenEvent` you can see how we check the result and proceed to read something from the device:
+
+private void PassWordWrittenEvent(object sender, CharacteristicWriteEventArgs e)
+        {
+            if (e.Success)
+            {
+                AdaptorState = string.Format("Password write: {0} bytes written", e.NumberOfBytesWritten);
+
+                // Read UUID
+                var readResult = _ble.ReadCharacteristic(SERVICE_FOR_BEACON, CHARACTERISTIC_FOR_UUIDD, UUIDReadEvent);
+            }
+            else
+            {
+                Application.Current.MainPage.DisplayAlert("ERROR", string.Format("Error writing password: {0}", e.Message), "Close");
+                _ = DisconnectDevice();
+            }
+        }
