@@ -49,6 +49,10 @@ Here is how it is done in the example view model:
                     genericService, deviceService, beaconService
                 };
                 
+You use the dependency service to get the BLE adaptor:
+
+       _ble = DependencyService.Get<INordicBleAdaptor>();
+
 Connecting to a device is done this way:
 
         private void NordicConnectDirect(DeviceInfo peripheral)
